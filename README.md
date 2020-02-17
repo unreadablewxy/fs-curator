@@ -12,3 +12,5 @@ The curator deals in files and directories. It monitors directories for changes 
 * Create multiple directories of files without duplicating data (via hard links)
 * Integrated ffmpeg based thumbnailing capability
 * Easy to understand & write ini configurations
+
+[See the configuration manual](https://github.com/unreadablewxy/fs-curator/wiki) for how it works

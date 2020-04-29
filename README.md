@@ -15,13 +15,18 @@ Under this vision
 
 The curator deals in files and directories. It monitors directories for changes and presents files where they need to based on a processing pipeline you define.
 
-* Watches directories for files and directories to ingest based on rules you configure
+* 100% native program written in C++20 with the resource efficiency you'd expect
+* Watches directories for files and directories to ingest files
 * Incrementally dedupe files as they are added
+* Murmur3 hash based binary level deduplication
+* PHash perceptual deduplication
+* Integrated FFMPEG thumbnailer
 * Groups "related" files that were added together
-* Trigger commands on files (un-archiving, re-encoding, etc)
-* Create multiple directories of files without duplicating data (via hard links)
-* Integrated ffmpeg based thumbnailing capability
+* Regex based renaming capabilities (with named capture groups)
+* Transform files by invoking other programs (un-archiving, re-encoding, etc)
+* Rules based directory tree generation
+* Hard links support to keep file contents synced & reduce duplication
 * Easy to understand & write ini configurations
-* A durable meta-data design that stores the data on the files with xattrs so it is hard to get the two desynced
+* A durable meta-data design (literally no SQL) using human operable directory trees & xattrs
 
 [See the configuration manual](https://github.com/unreadablewxy/fs-curator/wiki) for how it works

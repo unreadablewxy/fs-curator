@@ -1,4 +1,4 @@
-# Curator
+# FS-Curator
 
 On the surface this project is a high performance small media deduplicator. Able to spot duplicates against a collection of hundreds of thousands in a fraction of a second without the need to keep meta-data files separate to your data.
 
@@ -16,11 +16,11 @@ Under this vision
 The curator deals in files and directories. It monitors directories for changes and presents files where they need to based on a processing pipeline you define.
 
 * 100% native program written in C++20 with the resource efficiency you'd expect
-* Watches directories for files and directories to ingest files
+* Monitors multiple paths for directories & files to injest
 * Incrementally dedupe files as they are added
 * Murmur3 hash based binary level deduplication
-* PHash perceptual deduplication
-* Integrated FFMPEG thumbnailer
+* PHash perceptual deduplication for images
+* Integrated FFMPEG thumbnailer for images & videos
 * Groups "related" files that were added together
 * Regex based renaming capabilities (with named capture groups)
 * Transform files by invoking other programs (un-archiving, re-encoding, etc)

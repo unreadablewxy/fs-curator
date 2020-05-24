@@ -21,12 +21,13 @@ The curator deals in files and directories. It monitors directories for changes 
 * Murmur3 hash based binary level deduplication
 * PHash perceptual deduplication for images
 * Integrated FFMPEG thumbnailer for images & videos
-* Groups "related" files that were added together
+* Groups "related" files and maintain file ordering
 * Regex based renaming capabilities (with named capture groups)
 * Transform files by invoking other programs (un-archiving, re-encoding, etc)
 * Rules based directory tree generation
 * Hard links support to keep file contents synced & reduce duplication
 * Easy to understand & write ini configurations
 * A durable meta-data design (literally no SQL) using human operable directory trees & xattrs
+* No vendor lock in! Delete the meta-data directory at no risk to your directory trees
 
 [See the configuration manual](https://github.com/unreadablewxy/fs-curator/wiki) for how it works

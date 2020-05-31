@@ -1,21 +1,25 @@
 # FS-Curator
 
-On the surface this project is a high performance small media deduplicator. Able to spot duplicates against a collection of hundreds of thousands in a fraction of a second without the need to keep meta-data files separate to your data.
+![curator-pipeline](https://user-images.githubusercontent.com/18103838/83365303-fa01e100-a35b-11ea-9175-a102e20c2032.png)
 
-Dig deeper and the project reveals itself for what it actually is. A different way to use your file system, perhaps to its full potential. To this end, we ask "what if we treated files as more than just a blob of data identified by its path?". What if instead of paths, files are identified by any number of arbitrary meta-data? Which at a whim, may be used to create whatever directory structure one's workflow requires, based on rules instead of manual intervention? Similar to how SQL databases creates materialized views, optimal to a particualr workflow.
+The curator is a meta-data repository that sorts your files. Designed to utilize modern filesystems to their full potential while keeping the operator in control. With its help:
+* Deduplication can be done incrementally, using less resources
+* Directory structures no longer needs to be planned out beforehand and can be re-generated to adapt to changing workflows
+* Rule based file sorting leads to fewer placement inconsistencies
 
-To this end, the program maintains a `mono-collection`. A centralized location that serves as the authority of data and metadata for all the files it manages. Then based on rules and meta data, the service selects files and links them to other locations in your filesystem creating directory structures that suits a particular workflow.
+## No risk design
 
-Under this vision
-* Directory structure no longer needs to be planned out beforehand.
-* Rule based file sorting produces fewer placement inconsistencies than its manual counterpart.
-* If directory structure requirements change, or more than one directory structure is required, all that's required is to change a rule and the daemon take care of the rest.
+Rest assured the curator doesn't do anything risky or evil with your data
 
-## What's in the box
+* No vendor lock in! Delete the curator's repository at no risk to your directory trees or your stored meta-data
+* No propritary meta-data files. All meta-data are expressed as directory trees or attached via [NTFS streams](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/c54dec26-1551-4d3a-a0ea-4fa40f848eb3) or [xattrs](https://www.man7.org/linux/man-pages/man5/attr.5.html). Access them directly via `notepad` and `bash` commands, respectively
+* No networking capabilities, the curator respects your privacy. Which is why it uses Unix domain sockets that are literally incapable of connecting to another machines
+* No data loss risk in the repository. Curator will never run the equivlent of `rf -rm` and or overwrite files. In fact, to regenerate a directory tree, you must delete it yourself (or the command fails)
 
-The curator deals in files and directories. It monitors directories for changes and presents files where they need to based on a processing pipeline you define.
+# What exactly is in the box
 
 * 100% native program written in C++20 with the resource efficiency you'd expect
+* Easy to understand & write ini configurations
 * Monitors multiple paths for directories & files to injest
 * Incrementally dedupe files as they are added
 * Murmur3 hash based binary level deduplication
@@ -26,8 +30,5 @@ The curator deals in files and directories. It monitors directories for changes 
 * Transform files by invoking other programs (un-archiving, re-encoding, etc)
 * Rules based directory tree generation
 * Hard links support to keep file contents synced & reduce duplication
-* Easy to understand & write ini configurations
-* A durable meta-data design (literally no SQL) using human operable directory trees & xattrs
-* No vendor lock in! Delete the meta-data directory at no risk to your directory trees
 
 [See the configuration manual](https://github.com/unreadablewxy/fs-curator/wiki) for how it works

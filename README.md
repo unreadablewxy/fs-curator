@@ -14,7 +14,7 @@ Rest assured the curator doesn't do anything risky or evil with your data
 * No vendor lock in! Delete the curator's repository at no risk to your directory trees or your stored meta-data
 * No propritary meta-data files. All meta-data are expressed as directory trees or attached via [NTFS streams](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/c54dec26-1551-4d3a-a0ea-4fa40f848eb3) or [xattrs](https://www.man7.org/linux/man-pages/man5/attr.5.html). Access them directly via `notepad` and `bash` commands, respectively
 * No networking capabilities, the curator respects your privacy. Which is why it uses Unix domain sockets that are literally incapable of connecting to another machines
-* No data loss risk in the repository. Curator will never run the equivlent of `rf -rm` and or overwrite files. In fact, to regenerate a directory tree, you must delete it yourself (or the command fails)
+* No data loss risk in the repository. Curator will never run the equivlent of `rm -rf` and or overwrite files. In fact, to regenerate a directory tree, you must delete it yourself (or the command fails)
 
 # What exactly is in the box
 

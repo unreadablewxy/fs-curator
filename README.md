@@ -1,6 +1,6 @@
 # FS-Curator
 
-![curator-pipeline](https://user-images.githubusercontent.com/18103838/83365303-fa01e100-a35b-11ea-9175-a102e20c2032.png)
+![fs-curator-pipeline](https://user-images.githubusercontent.com/18103838/83366502-55d06800-a364-11ea-8302-f49a7a36561c.png)
 
 The curator is a meta-data repository that sorts your files. Designed to utilize modern filesystems to their full potential while keeping the operator in control. With its help:
 * Deduplication can be done incrementally, using less resources

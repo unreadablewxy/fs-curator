@@ -4,7 +4,7 @@ The curator is a meta-data repository that organizes your files. Designed to uti
 
 ### The service
 
-![fs-curator-pipeline - compare_curator](https://user-images.githubusercontent.com/18103838/107892700-c06a0980-6edb-11eb-97d3-ac26b5243d86.png)
+![fs-curator workflow](https://user-images.githubusercontent.com/18103838/107893376-ad593880-6edf-11eb-8cfd-9b27101632ad.png)
 
 * Makes no assumptions about nor places any demands on your workflow(s)
 * Fault tolerant design that leverages OS guarantees for graceful degredation in the case of user error
@@ -12,7 +12,7 @@ The curator is a meta-data repository that organizes your files. Designed to uti
 
 ### Other tools
 
-![fs-curator-pipeline - compare_others](https://user-images.githubusercontent.com/18103838/107892701-c102a000-6edb-11eb-9155-ddec3f85e3fd.png)
+![other tools workflow](https://user-images.githubusercontent.com/18103838/107893377-ad593880-6edf-11eb-852e-33b407fc4e66.png)
 
 * Demands your workflow adapt to its assumptions, behaves unexpectedly if violated
 * Usually single point of failure, degrades terribly if corrupted

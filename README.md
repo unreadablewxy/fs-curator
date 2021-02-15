@@ -1,19 +1,32 @@
 # FS-Curator
 
-![fs-curator-pipeline](https://user-images.githubusercontent.com/18103838/83366502-55d06800-a364-11ea-8302-f49a7a36561c.png)
+The curator is a meta-data repository that organizes your files. Designed to utilize modern filesystems to their full potential while keeping the operator in total control
 
-The curator is a meta-data repository that sorts your files. Designed to utilize modern filesystems to their full potential while keeping the operator in control. With its help:
-* Deduplication can be done incrementally, using less resources
-* Directory structures no longer needs to be planned out beforehand and can be re-generated to adapt to changing workflows
-* Rule based file sorting leads to fewer placement inconsistencies
+### The service
 
-## No risk design
+![fs-curator-pipeline - compare_curator](https://user-images.githubusercontent.com/18103838/107892700-c06a0980-6edb-11eb-97d3-ac26b5243d86.png)
+
+* Makes no assumptions about nor places any demands on your workflow(s)
+* Fault tolerant design that leverages OS guarantees for graceful degredation in the case of user error
+* Configure for what you want, not what to do. Write 100 lines of config, it reorganizes 100K files
+
+### Other tools
+
+![fs-curator-pipeline - compare_others](https://user-images.githubusercontent.com/18103838/107892701-c102a000-6edb-11eb-9155-ddec3f85e3fd.png)
+
+* Demands your workflow adapt to its assumptions, behaves unexpectedly if violated
+* Usually single point of failure, degrades terribly if corrupted
+* Narrow purpose restricts the amount of compatible workflows, frequently involving repetitive list sifting
+
+# No risk design
 
 Rest assured the curator doesn't do anything risky or evil with your data
 
-* No vendor lock in! Delete the curator's repository at no risk to your directory trees or your stored meta-data
-* No propritary meta-data files. All meta-data are expressed as directory trees or attached via [NTFS streams](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/c54dec26-1551-4d3a-a0ea-4fa40f848eb3) or [xattrs](https://www.man7.org/linux/man-pages/man5/attr.5.html). Access them directly via `notepad` and `bash` commands, respectively
-* No networking capabilities, the curator respects your privacy. Which is why it uses Unix domain sockets that are literally incapable of connecting to another machines
+* No vendor lock in! Delete the curator's DB at no risk to your directory trees or your stored meta-data
+* No propritary meta-data files. All meta-data are expressed as directory trees or attached via [NTFS streams](https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/c54dec26-1551-4d3a-a0ea-4fa40f848eb3) or [xattrs](https://www.man7.org/linux/man-pages/man5/attr.5.html). Access them directly via `notepad` and `cli` commands, respectively
+* No networking capabilities, the curator respects your privacy.
+    * It uses Unix domain sockets that are literally incapable of connecting to another machines
+    * For networked clients that need to access meta-data, attributes used by the curator are fully compatible with both Windows SMB and Samba ([with some config](https://www.samba.org/samba/docs/current/man-html/vfs_streams_xattr.8.html]))
 * No data loss risk in the repository. Curator will never run the equivlent of `rm -rf` and or overwrite files. In fact, to regenerate a directory tree, you must delete it yourself (or the command fails)
 
 # What exactly is in the box
